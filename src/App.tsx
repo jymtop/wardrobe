@@ -146,57 +146,54 @@ export default function App() {
           </div>
           
           {/* 第二行：视图切换 + 添加按钮 */}
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex items-center justify-center gap-2">
             {/* 视图切换 */}
-            <div className="flex bg-white rounded-xl p-1 shadow-sm">
+            <div className="flex bg-white rounded-full p-1 shadow-sm">
               <button
                 onClick={() => {
                   if (!wardrobe.isOpen) wardrobe.openWardrobe();
                   setViewMode('wardrobe');
                 }}
-                className={`px-3 py-1.5 rounded-lg text-sm transition-colors ${
+                className={`px-4 py-2 rounded-full text-sm whitespace-nowrap transition-colors ${
                   viewMode === 'wardrobe' 
                     ? 'bg-primary text-white' 
                     : 'text-gray-600 hover:bg-gray-100'
                 }`}
               >
-                🚪 衣柜
+                👗衣柜
               </button>
               <button
                 onClick={() => setViewMode('grid')}
-                className={`px-3 py-1.5 rounded-lg text-sm transition-colors ${
+                className={`px-4 py-2 rounded-full text-sm whitespace-nowrap transition-colors ${
                   viewMode === 'grid' 
                     ? 'bg-primary text-white' 
                     : 'text-gray-600 hover:bg-gray-100'
                 }`}
               >
-                📋 列表
+                📋列表
               </button>
               <button
                 onClick={() => setViewMode('stats')}
-                className={`px-3 py-1.5 rounded-lg text-sm transition-colors ${
+                className={`px-4 py-2 rounded-full text-sm whitespace-nowrap transition-colors ${
                   viewMode === 'stats' 
                     ? 'bg-primary text-white' 
                     : 'text-gray-600 hover:bg-gray-100'
                 }`}
               >
-                📊 统计
+                📊统计
               </button>
             </div>
             
             {/* 添加按钮 */}
-            <Button
-              variant="primary"
-              size="sm"
+            <button
               onClick={() => setShowAddForm(true)}
-              icon={
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                </svg>
-              }
+              className="flex items-center gap-1 px-4 py-2 bg-primary text-white rounded-full text-sm whitespace-nowrap shadow-sm hover:bg-primary/90 transition-colors"
             >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
               添加
-            </Button>
+            </button>
           </div>
         </div>
       </header>
