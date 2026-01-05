@@ -119,11 +119,7 @@ export default function App() {
       <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-sm border-b border-primary/10">
         <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <img 
-              src="/wardrobe-icon.svg" 
-              alt="Logo" 
-              className="w-8 h-8"
-            />
+            <span className="text-2xl">👗</span>
             <h1 className="font-serif text-xl text-wood-dark">她的衣柜</h1>
           </div>
           
