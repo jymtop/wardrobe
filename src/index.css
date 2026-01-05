@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #E8B4B8;
+  --primary-dark: #D4949A;
+  --secondary: #A28089;
+  --accent: #EED6D3;
+  --background: #FDF6F0;
+  --background-dark: #F5EDE5;
+  --wood: #C9A66B;
+  --wood-dark: #8B6914;
+  --wood-light: #E8D5B0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  background: linear-gradient(135deg, #FDF6F0 0%, #F5EDE5 50%, #EED6D3 100%);
+  min-height: 100vh;
+  color: #4A4A4A;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Noto Serif SC', serif;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5EDE5;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E8B4B8;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D4949A;
+}
+
+/* 衣柜门3D效果 */
+.door-container {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.door-left {
+  transform-origin: left center;
+  transform-style: preserve-3d;
+}
+
+.door-right {
+  transform-origin: right center;
+  transform-style: preserve-3d;
+}
+
+/* 木纹纹理 */
+.wood-texture {
+  background: linear-gradient(
+    90deg,
+    #C9A66B 0%,
+    #D4B07A 10%,
+    #C9A66B 20%,
+    #BF9A5C 30%,
+    #C9A66B 40%,
+    #D4B07A 50%,
+    #C9A66B 60%,
+    #BF9A5C 70%,
+    #C9A66B 80%,
+    #D4B07A 90%,
+    #C9A66B 100%
+  );
+  background-size: 100% 100%;
+}
+
+.wood-texture-dark {
+  background: linear-gradient(
+    90deg,
+    #8B6914 0%,
+    #9A7520 10%,
+    #8B6914 20%,
+    #7C5A10 30%,
+    #8B6914 40%,
+    #9A7520 50%,
+    #8B6914 60%,
+    #7C5A10 70%,
+    #8B6914 80%,
+    #9A7520 90%,
+    #8B6914 100%
+  );
+}
+
+/* 衣架样式 */
+.hanger {
+  position: relative;
+}
+
+.hanger::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 20px;
+  border: 3px solid #8B6914;
+  border-bottom: none;
+  border-radius: 30px 30px 0 0;
+}
+
+.hanger::after {
+  content: '';
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 12px;
+  background: #8B6914;
+  border-radius: 2px;
+}
+
+/* 层板阴影 */
+.shelf-shadow {
+  box-shadow: 
+    inset 0 -5px 10px rgba(0, 0, 0, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 抽屉把手 */
+.drawer-handle {
+  background: linear-gradient(180deg, #D4B07A 0%, #C9A66B 50%, #BF9A5C 100%);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* 卡片悬浮效果 */
+.clothing-card {
+  transition: all 0.3s ease;
+}
+
+.clothing-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* 玻璃态效果 */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* 按钮涟漪效果 */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+
+.ripple:active::after {
+  width: 200px;
+  height: 200px;
+}
+
+/* 渐变边框 */
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: linear-gradient(135deg, #E8B4B8, #A28089);
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+}
+
+/* 星星评分 */
+.star-rating {
+  color: #E8B4B8;
+}
+
+/* 标签样式 */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.tag-primary {
+  background: #EED6D3;
+  color: #A28089;
+}
+
+.tag-season {
+  background: #FFF5E6;
+  color: #C9A66B;
+}
+
+.tag-occasion {
+  background: #E8F5E9;
+  color: #66BB6A;
+}
+
+/* 输入框焦点效果 */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #E8B4B8;
+  box-shadow: 0 0 0 3px rgba(232, 180, 184, 0.2);
+}
+
+/* 复选框自定义 */
+.checkbox-custom {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #E8B4B8;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.checkbox-custom:checked {
+  background: #E8B4B8;
+  border-color: #E8B4B8;
+}
+
+.checkbox-custom:checked::after {
+  content: '✓';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+}
+
+/* 动画延迟工具类 */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* 响应式调整 */
+@media (max-width: 640px) {
+  .hanger::before {
+    width: 40px;
+    height: 15px;
+    top: -15px;
+  }
+  
+  .hanger::after {
+    height: 10px;
+    top: -23px;
+  }
+}
