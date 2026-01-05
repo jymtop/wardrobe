@@ -4,7 +4,6 @@ import type { ClothingItem, ClothingFormData } from './types';
 import { useWardrobe } from './hooks/useWardrobe';
 import { useClothing } from './hooks/useClothing';
 import { useFilter } from './hooks/useFilter';
-import { useBackgroundMusic } from './hooks/useBackgroundMusic';
 import { useToast } from './components/ui/Toast';
 import { importFromJSON } from './lib/storage';
 
@@ -28,7 +27,6 @@ export default function App() {
   const clothing = useClothing();
   const filter = useFilter(clothing.items);
   const toast = useToast();
-  const music = useBackgroundMusic();
 
   // 本地状态
   const [viewMode, setViewMode] = useState<ViewMode>('wardrobe');
@@ -121,10 +119,29 @@ export default function App() {
       <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-sm border-b border-primary/10">
         <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <svg className="w-7 h-7 text-wood" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M4 2h16a1 1 0 011 1v18a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1zm1 2v16h6v-6h2v6h6V4h-6v6h-2V4H5zm3 7h2v2H8v-2zm6 0h2v2h-2v-2z"/>
-            </svg>
-            <h1 className="font-serif text-xl text-wood-dark">李亚琴<span className="text-red-400">❤</span>的衣柜</h1>
+            {/* 可爱卡通衣柜图标 */}
+            <div className="w-8 h-8 relative">
+              <svg viewBox="0 0 64 64" className="w-full h-full">
+                {/* 衣柜主体 */}
+                <rect x="8" y="10" width="48" height="50" rx="4" fill="#C9A66B" stroke="#8B6914" strokeWidth="2"/>
+                {/* 衣柜顶部装饰 */}
+                <rect x="6" y="8" width="52" height="6" rx="2" fill="#8B6914"/>
+                {/* 左门 */}
+                <rect x="10" y="14" width="20" height="42" rx="2" fill="#E8D5B0" stroke="#C9A66B" strokeWidth="1"/>
+                {/* 右门 */}
+                <rect x="34" y="14" width="20" height="42" rx="2" fill="#E8D5B0" stroke="#C9A66B" strokeWidth="1"/>
+                {/* 左门把手 */}
+                <circle cx="28" cy="35" r="2.5" fill="#FFB6C1" stroke="#E8B4B8" strokeWidth="1"/>
+                {/* 右门把手 */}
+                <circle cx="36" cy="35" r="2.5" fill="#FFB6C1" stroke="#E8B4B8" strokeWidth="1"/>
+                {/* 爱心装饰 */}
+                <path d="M32 20 C32 17 35 15 37 17 C39 15 42 17 42 20 C42 24 37 28 37 28 C37 28 32 24 32 20Z" fill="#FFB6C1"/>
+                {/* 衣柜脚 */}
+                <rect x="12" y="58" width="6" height="4" rx="1" fill="#8B6914"/>
+                <rect x="46" y="58" width="6" height="4" rx="1" fill="#8B6914"/>
+              </svg>
+            </div>
+            <h1 className="font-serif text-xl text-wood-dark"><span className="text-red-400">❤</span>李亚琴<span className="text-red-400">❤</span>的衣柜</h1>
           </div>
           
           <div className="flex items-center gap-2">
@@ -199,10 +216,6 @@ export default function App() {
                   <WardrobeDoor
                     isOpen={wardrobe.isOpen}
                     onToggle={handleOpenWardrobe}
-                    soundEnabled={wardrobe.soundEnabled}
-                    onToggleSound={wardrobe.toggleSound}
-                    musicEnabled={music.isEnabled}
-                    onToggleMusic={music.toggleMusic}
                   />
                 </div>
               ) : (

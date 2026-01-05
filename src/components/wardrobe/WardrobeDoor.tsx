@@ -3,68 +3,14 @@ import { motion } from 'framer-motion';
 interface WardrobeDoorProps {
   isOpen: boolean;
   onToggle: () => void;
-  soundEnabled: boolean;
-  onToggleSound: () => void;
-  musicEnabled: boolean;
-  onToggleMusic: () => void;
 }
 
 export default function WardrobeDoor({ 
   isOpen, 
-  onToggle, 
-  soundEnabled, 
-  onToggleSound,
-  musicEnabled,
-  onToggleMusic
+  onToggle
 }: WardrobeDoorProps) {
   return (
     <div className="relative w-full max-w-2xl mx-auto" style={{ perspective: '1200px' }}>
-      {/* 控制按钮组 */}
-      <div className="absolute -top-12 right-0 flex gap-2 z-10">
-        {/* 背景音乐开关 */}
-        <button
-          onClick={onToggleMusic}
-          className={`p-2 rounded-full transition-colors ${
-            musicEnabled 
-              ? 'bg-primary/20 text-primary' 
-              : 'text-secondary hover:text-primary'
-          }`}
-          title={musicEnabled ? '关闭音乐' : '开启音乐'}
-        >
-          {musicEnabled ? (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-            </svg>
-          ) : (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3l18 18" />
-            </svg>
-          )}
-        </button>
-        
-        {/* 开门音效开关 */}
-        <button
-          onClick={onToggleSound}
-          className={`p-2 rounded-full transition-colors ${
-            soundEnabled 
-              ? 'bg-primary/20 text-primary' 
-              : 'text-secondary hover:text-primary'
-          }`}
-          title={soundEnabled ? '关闭音效' : '开启音效'}
-        >
-          {soundEnabled ? (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-            </svg>
-          ) : (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-            </svg>
-          )}
-        </button>
-      </div>
 
       {/* 衣柜框架 */}
       <div 
