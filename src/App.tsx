@@ -4,6 +4,7 @@ import type { ClothingItem, ClothingFormData } from './types';
 import { useWardrobe } from './hooks/useWardrobe';
 import { useClothing } from './hooks/useClothing';
 import { useFilter } from './hooks/useFilter';
+import { useBackgroundMusic } from './hooks/useBackgroundMusic';
 import { useToast } from './components/ui/Toast';
 import { importFromJSON } from './lib/storage';
 
@@ -27,6 +28,7 @@ export default function App() {
   const clothing = useClothing();
   const filter = useFilter(clothing.items);
   const toast = useToast();
+  const music = useBackgroundMusic();
 
   // 本地状态
   const [viewMode, setViewMode] = useState<ViewMode>('wardrobe');
@@ -119,8 +121,10 @@ export default function App() {
       <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-sm border-b border-primary/10">
         <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-2xl">👗</span>
-            <h1 className="font-serif text-xl text-wood-dark">她的衣柜</h1>
+            <svg className="w-7 h-7 text-wood" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M4 2h16a1 1 0 011 1v18a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1zm1 2v16h6v-6h2v6h6V4h-6v6h-2V4H5zm3 7h2v2H8v-2zm6 0h2v2h-2v-2z"/>
+            </svg>
+            <h1 className="font-serif text-xl text-wood-dark">李亚琴<span className="text-red-400">❤</span>的衣柜</h1>
           </div>
           
           <div className="flex items-center gap-2">
@@ -197,6 +201,8 @@ export default function App() {
                     onToggle={handleOpenWardrobe}
                     soundEnabled={wardrobe.soundEnabled}
                     onToggleSound={wardrobe.toggleSound}
+                    musicEnabled={music.isEnabled}
+                    onToggleMusic={music.toggleMusic}
                   />
                 </div>
               ) : (

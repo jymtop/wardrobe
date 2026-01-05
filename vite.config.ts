@@ -12,8 +12,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'wardrobe-icon-192.png', 'wardrobe-icon-512.png'],
       manifest: {
-        name: '她的衣柜 - 电子衣柜管理',
-        short_name: '她的衣柜',
+        name: '李亚琴的衣柜 - 电子衣柜管理',
+        short_name: '亚琴的衣柜',
         description: '一个温柔治愈的电子衣柜管理应用',
         theme_color: '#E8B4B8',
         background_color: '#FDF6F0',
