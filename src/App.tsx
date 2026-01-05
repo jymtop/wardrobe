@@ -117,8 +117,9 @@ export default function App() {
     <div className="min-h-screen bg-background">
       {/* 顶部导航 */}
       <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-sm border-b border-primary/10">
-        <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-2">
+        <div className="max-w-4xl mx-auto px-4 py-3">
+          {/* 第一行：标题 */}
+          <div className="flex items-center justify-center gap-2 mb-3">
             {/* 可爱卡通衣柜图标 */}
             <div className="w-8 h-8 relative">
               <svg viewBox="0 0 64 64" className="w-full h-full">
@@ -144,7 +145,8 @@ export default function App() {
             <h1 className="font-serif text-xl text-wood-dark"><span className="text-red-400">❤</span>李亚琴<span className="text-red-400">❤</span>的衣柜</h1>
           </div>
           
-          <div className="flex items-center gap-2">
+          {/* 第二行：视图切换 + 添加按钮 */}
+          <div className="flex items-center justify-center gap-3">
             {/* 视图切换 */}
             <div className="flex bg-white rounded-xl p-1 shadow-sm">
               <button
